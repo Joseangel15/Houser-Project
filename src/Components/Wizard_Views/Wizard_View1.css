@@ -1,0 +1,79 @@
+
+
+.titleAndCancelBtn{
+    display: flex;
+    justify-content: space-between;
+}
+
+.wizardTitle{
+    margin-left: 10px;
+
+}
+
+.cancelBtn{
+    margin: 20px;
+    border: none;
+    background-color: rgb(254, 194, 194);
+    padding: 5px;
+    font-weight: bold;
+    border-radius: 3px;
+    
+}
+
+.dot{
+    height: 30px;
+    width: 30px;
+    background-color: rgb(175, 212, 192);
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 50px; 
+    margin-right: 50px;
+    position: relative;
+}
+
+.innerDot{
+    height: 75%;
+    width: 75%;
+    top: 12%; left: 12%;
+    background-color: rgb(81, 152, 114);
+    border-radius: 50%;
+    position: relative;
+}
+
+.propertyInfo{
+    margin: 0px 100px;
+    display: flex;
+    flex-flow: column;
+}
+
+.propName{
+    margin-top: 40px;
+    margin-bottom: 5px;
+    display: flex;
+    
+}
+
+.propDesc{
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.nextBtn{
+    margin: 20px auto; 
+    width: 100px;
+    border: none;
+    background-color: rgb(59, 82, 73);
+    padding: 10px;
+    border-radius: 3px;
+    color: white;
+    
+}
+
+.propNameInp{
+    border: 1px solid green;
+}
+
+.propDescInp{
+    height: 100px;
+    border: 1px solid green;
+}

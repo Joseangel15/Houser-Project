@@ -1,0 +1,66 @@
+
+.mainDashDiv{
+    background-color: rgb(175, 212, 192);
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+}
+
+.hamster{
+    background-color:   rgb(251, 253, 252);
+    width: 750px;
+    height: 100vh;
+    margin: auto;
+}
+
+.addPropertyBtn{
+    border: none;
+    background-color: rgb(138, 234, 146);
+    margin: 20px;
+    padding: 10px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.filter{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.listPropH5{
+    margin: 10px;
+}
+
+.filterInput{
+    margin-right: 10px;
+    
+}
+
+.filterBtn{
+    margin-right: 10px;
+    border: none;
+    background-color: rgb(138, 234, 146);
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.resetBtn{
+    margin-right: 10px;
+    border: none;
+    background-color: rgb(59, 82, 73);
+    padding: 10px;
+    border-radius: 3px;
+    color: white;
+}
+
+.hrLine1{
+    margin-top: 30px;
+    width: 700px;
+}
+
+.homeLisTitle{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 30px;
+}

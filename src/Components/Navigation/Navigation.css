@@ -4,18 +4,35 @@
     height: 75px;
     width: 100%;
     background-color: rgb(81, 152, 114);
-}
-
-.navTitles{
     display: flex;
     justify-content: space-evenly;
     height: 100%;
     color: white;
 }
 
+
+
 .houserLogo{
     background-image: url(header_logo.png);
     background-repeat: no-repeat;
-    width: 40px;
-    height: 25px;
+    width: 35px;
+    height: 30px;
+    margin-top: 16px;
+     
+}
+
+.navTitle{
+    display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.houserTitle{
+    margin-Left: 10px;
+
+}
+
+.dashboardTitle{
+    margin-left: 10px;
+    font-weight: 100;
 }
