@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import Navigation from '../Navigation/Navigation';
+import {Link} from 'react-router-dom';
 import './Wizard_2.css';
 
 class Wizard_2 extends Component {
 
 
     render() {
+
+        const flex = {
+            display: 'flex'
+        }
+
+        const borderIn = {
+            border: '1px solid green'
+        }
+
+
         return (
             <div>
                 <Navigation />
@@ -26,10 +37,8 @@ class Wizard_2 extends Component {
                             <h4>Step 2</h4>
 
                             <div className='dots'>
-                                <div className='dot'>
-                                    <div className='innerDot'></div>
-                                </div >
-                                <div className='dot'></div >
+                                <div className='dotF'></div >
+                                <div className='dot1'></div >
                                 <div className='dot'></div >
                                 <div className='dot'></div >
                                 <div className='dot'></div >
@@ -37,40 +46,45 @@ class Wizard_2 extends Component {
 
                         </div>
 
-                        <div>
-                            <div>
+                        <div className='propertyInfo'>
 
-                                <h4>Address</h4>
+                            <div >
 
-                                <input type="text"/>
+                                <h4 className='h4Address'>Address</h4>
+
+                                <input type="text" className='addressInp' style={borderIn}/>
+
+                            </div>
+
+                            <div className='cityAndState'>
+
+                                <div className='cityDiv'>
+                                    <h4 style={flex}>City</h4>
+
+                                    <input type="text" style={borderIn}/>
+                                </div>
+
+                                <div>
+                                    <h4 style={flex}>State</h4>
+
+                                    <input type="text" style={borderIn}/>
+                                </div>
 
                             </div>
 
                             <div>
 
-                                <h4>City</h4>
+                                <h4 style={flex}>Zip</h4>
 
-                                <input type="text"/>
-
-                                <h4>State</h4>
-
-                                <input type="text"/>
+                                <input type="text" className='zipInp' style={flex}/>
 
                             </div>
 
-                            <div>
+                            <div className='lowerBtns'>
 
-                                <h4>Zip</h4>
+                                <Link to='/Wizard'><button className='preSteBtn'>Previous Step</button></Link>
 
-                                <input type="text"/>
-
-                            </div>
-
-                            <div>
-
-                                <button>Previous Step</button>
-
-                                <button>Next Step</button>
+                                <Link to='/Wizard3'><button className='nextSteBtn'>Next Step</button></Link>
 
                             </div>
 

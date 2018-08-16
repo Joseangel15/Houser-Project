@@ -21,24 +21,32 @@
 }
 
 .dot{
-    height: 30px;
-    width: 30px;
-    background-color: rgb(175, 212, 192);
-    border-radius: 50%;
-    display: inline-block;
-    margin-left: 50px; 
-    margin-right: 50px;
-    position: relative;
+    background-image: url(step_inactive.png);
+    background-repeat: no-repeat;
+    height: 38px;
+    width: 38px;
 }
 
-.innerDot{
+.dot1{
+    background-image: url(step_active.png);
+    background-repeat: no-repeat;
+    height: 38px;
+    width: 38px;
+}
+
+.dots{
+    display: flex; 
+    justify-content: space-evenly;
+
+}
+/* .innerDot{
     height: 75%;
     width: 75%;
     top: 12%; left: 12%;
     background-color: rgb(81, 152, 114);
     border-radius: 50%;
     position: relative;
-}
+} */
 
 .propertyInfo{
     margin: 0px 100px;

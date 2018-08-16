@@ -1,0 +1,57 @@
+
+
+.h4Address{
+    margin-top: 40px;
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.addressInp{
+    display: flex;
+    width: 100%;
+}
+
+.cityAndState{
+    display: flex;
+    flex-direction: row;
+}
+
+.cityDiv{
+    margin-right: 100px;
+}
+
+.lowerBtns{
+    margin-top: 40px;
+}
+
+.preSteBtn{
+    margin: 20px auto; 
+    width: 130px;
+    border: none;
+    background-color: rgb(59, 82, 73);
+    padding: 10px;
+    border-radius: 3px;
+    color: white;
+    margin-right: 320px;
+}
+
+.nextSteBtn{
+    margin: 20px auto; 
+    width: 100px;
+    border: none;
+    background-color: rgb(59, 82, 73);
+    padding: 10px;
+    border-radius: 3px;
+    color: white;
+}
+
+.zipInp{
+    border: 1px solid green;
+}
+
+.dotF{
+    background-image: url(step_completed.png);
+    background-repeat: no-repeat;
+    height: 38px;
+    width: 38px;
+}

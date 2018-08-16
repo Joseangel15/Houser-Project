@@ -1,0 +1,59 @@
+
+
+a {
+    text-decoration-color: none;
+    text-decoration-line: none;
+}
+
+.mainLogo{
+    background-image: url(auth_logo.png);
+    background-repeat: no-repeat;
+    width: 165px;
+    height: 190px;
+    margin: auto;
+}
+
+.logoParent{
+    padding-top: 200px;
+}
+
+.userH4{
+    margin-top: 40px;
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.userAndPassDiv{
+    margin: auto;
+    width: 500px;
+    margin-bottom: 5px;
+}
+
+.loginInputs{
+    width: 100%;
+}
+
+.loginBtns{
+    margin-top: 40px;
+}
+
+.loginBtn{
+    width: 100px;
+    border: none;
+    background-color: rgb(138, 234, 146);
+    margin: 20px;
+    margin-right: 40px;
+    padding: 10px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.regiBtn{
+    width: 100px;
+    margin-right: 10px;
+    border: none;
+    background-color: rgb(59, 82, 73);
+    padding: 10px;
+    border-radius: 3px;
+    color: white;
+}

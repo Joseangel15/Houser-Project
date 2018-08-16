@@ -1,0 +1,21 @@
+
+
+.desRentH4 {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.recRent{
+    margin-top: 40px;
+}
+
+.completeBtn{
+    margin-right: 10px;
+    border: none;
+    background-color: rgb(138, 234, 146);
+    padding: 10px;
+    border-radius: 3px;
+    width: 100px;
+    font-weight: bold;
+
+}
