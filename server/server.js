@@ -2,7 +2,7 @@ require('dotenv').config()
 const bodyParser = require('body-parser');
 const massive = require('massive');
 const express = require('express');
-const controller = ('./controllers.js')
+const controller = require('./controllers.js');
 const app = express();
 
 
@@ -26,6 +26,9 @@ const c = controller;
 
 //Endpoints
 
+// app.get('/api/login/:id', c.login);
+
+app.post('/api/register', c.register);
 
 
 

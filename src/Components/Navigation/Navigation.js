@@ -22,7 +22,7 @@ function Navigation () {
 
                 <div className='logOutLink'>
 
-                    <Link to='/Login'><h5>Logout</h5></Link>
+                    <Link to='/'><h5>Logout</h5></Link>
 
                 </div>
 

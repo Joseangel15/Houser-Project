@@ -8,14 +8,6 @@ class Wizard_4 extends Component {
 
     render() {
 
-        const flex = {
-            display: 'flex'
-        }
-
-        const borderIn = {
-            border: '1px solid green'
-        }
-
 
         return (
             <div>

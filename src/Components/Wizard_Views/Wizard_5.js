@@ -8,14 +8,6 @@ class Wizard_5 extends Component {
 
     render() {
 
-        const flex = {
-            display: 'flex'
-        }
-
-        const borderIn = {
-            border: '1px solid green'
-        }
-
 
         return (
             <div>
@@ -60,7 +52,7 @@ class Wizard_5 extends Component {
 
                             <Link to='/Wizard4'><button className='preSteBtn'>Previous Step</button></Link>
 
-                            <Link to='/'><button className='completeBtn'>Complete</button></Link>
+                            <Link to='/Dashboard'><button className='completeBtn'>Complete</button></Link>
 
                         </div>
 

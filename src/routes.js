@@ -13,8 +13,8 @@ import Auth_View from './Components/Auth_View/Auth_View';
 export default (
 
     <Switch>
-        <Route component={Dashboard_View} exact path='/' />
-        <Route component={Auth_View} path='/Login' />
+        <Route component={Auth_View} exact path='/' />
+        <Route component={Dashboard_View} path='/Dashboard' />
         <Route component={Wizard_View1} path='/Wizard' />
         <Route component={Wizard_2} path='/Wizard2' />
         <Route component={Wizard_3} path='/Wizard3' />
