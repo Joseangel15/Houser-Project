@@ -1,2 +1,2 @@
 select * from houses
-where user_id = '5';
+where user_id = $1;

@@ -32,8 +32,27 @@ componentDidMount () {
 
         const properties = this.state.property.map(el => {
             return (
-                <div>
-                    {el.property_name}
+                <div className='mainBar2'>
+
+                    <div className='housePic'>
+                        <img src="{el.image_url}" alt=""/>
+                    </div>
+
+                    <div className='nameAndDesc'>
+                        {el.property_name}
+                        {el.property_description}
+
+                    </div>
+
+                    <div className='else'>
+                        {el.loan_amount}
+                        {el.monthly_mortgage}
+                        {el.recommended_rent}
+                        {el.desired_rent}
+                        {el.address}
+                        {el.city}
+                    </div>
+
                 </div>
             )
         })
@@ -74,7 +93,9 @@ componentDidMount () {
                         <h5 className='homeLisTitle'>Home Listings</h5>
 
                         <div>
+
                             {properties}
+
                         </div>
 
 

@@ -80,17 +80,17 @@ module.exports = {
     },
 
     getProperties: (req, res, next) => {
+        const {id} = req.session.user;
         const db = req.app.get('db');
-        // let user_id = req.session.user.id;
-        let {id} = req.params;
+        const newId = id.toString()
         
-        db.get_Property([id]).then(dbResult => {
+        db.get_Property([ newId ]).then(dbResult => {
             
             res.status(200).send(dbResult);
 
             }).catch(err => console.log(err))
 
-        console.log(req.session.user.id)
+        console.log(newId)
     }
 
 

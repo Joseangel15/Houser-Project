@@ -64,3 +64,34 @@
     justify-content: flex-start;
     margin-left: 30px;
 }
+
+.mainBar2{
+    border: 2px solid black;
+    margin: 20px;
+    height: 150px;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    
+}
+
+.housePic{
+    border: 2px solid black;
+    width: 40%;
+    height: 100%;
+    
+}
+
+.nameAndDesc{
+    border: 2px solid black;
+    width: 40%;
+    height: 100%;
+    display: flex;
+}
+
+.else{
+    border: 2px solid black;
+    width: 40%;
+    height: 100%;
+    display: flex;
+}
