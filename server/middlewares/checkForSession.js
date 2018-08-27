@@ -1,13 +1,13 @@
 
 
-module.exports = function( req, res, next ) {
-    const {session} = req;
-    if ( !session.user ) {
-        session.user = {
-            username: '',
-            password: '',
-        }
-    }
+module.exports = function( req, res, next ){
 
-    next()
-}
+    if( !req.session.user ){
+      req.session.user = { 
+        id: 0,
+        username: ''
+      };
+    }
+    next();
+    
+  }

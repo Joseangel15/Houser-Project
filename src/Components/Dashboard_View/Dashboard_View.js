@@ -2,15 +2,41 @@ import React, {Component} from 'react';
 import Navigation from '../Navigation/Navigation';
 import {Link} from 'react-router-dom';
 import './Dashboard_View.css';
+import axios from 'axios';
+// import {connect} from 'react-redux';
+// import {updateUserId} from '../../Ducks/reducer';
 
 
 class Dashboard_View extends Component {
+    constructor(props){
+        super(props)
 
+        this.state = {
 
+            property: []
+        }
+    }
 
+    
+componentDidMount () {
+
+    axios.get('/api/properties').then(res => {
+        this.setState({
+            property: res.data
+        })
+    })
+    console.log(this.state.property)
+}
 
     render(){
 
+        const properties = this.state.property.map(el => {
+            return (
+                <div>
+                    {el.property_name}
+                </div>
+            )
+        })
         
         return(
             <div>
@@ -20,7 +46,15 @@ class Dashboard_View extends Component {
 
                     <div className='hamster'>
 
-                        <Link to='/Wizard'><button className='addPropertyBtn'>Add New Property</button></Link>
+                        <Link to='/Wizard'>
+                            <button 
+                                className='addPropertyBtn'
+                                >
+                            
+                            Add New Property
+                            
+                            </button>
+                        </Link>
 
                         <div className='filter'>
 
@@ -40,7 +74,7 @@ class Dashboard_View extends Component {
                         <h5 className='homeLisTitle'>Home Listings</h5>
 
                         <div>
-                            {/* These divs will be populated by mapping the results from the database.  */}
+                            {properties}
                         </div>
 
 
@@ -52,6 +86,8 @@ class Dashboard_View extends Component {
         )
     }
 }
+
+
 
 
 export default Dashboard_View;

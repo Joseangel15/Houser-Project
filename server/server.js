@@ -8,7 +8,8 @@ const app = express();
 
 
 //Middleware
-const checkForSession = require('./middlewares/checkForSession');
+const checkForSession = require('./middlewares/checkForSession')
+const checkAuth = require('./middlewares/checkAuth.js');
 
 
 const {
@@ -51,7 +52,11 @@ app.post('/api/auth/logout', c.logout)
 
 //Create Property
 
-app.post('/api/properties', c.saveProperties)
+app.post('/api/properties', checkAuth, c.saveProperties)
+
+//Display properties
+
+app.get('/api/properties', c.getProperties)
 
 
 

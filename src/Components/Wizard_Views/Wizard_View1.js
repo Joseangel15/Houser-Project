@@ -6,14 +6,21 @@ import { updatePropertyName, updatePropertyDescription } from '../../Ducks/reduc
 import './Wizard_View1.css';
 
 class Wizard_View1 extends Component {
+    constructor(props){
+        super(props)
+
+
+
+        this.handleCancel = this.handleCancel.bind(this);
+    }
     
 
-    handleCancel = () => {
+    handleCancel  () {
 
         let confirmation = window.confirm('Are you sure you want to cancel this process?')
     
         if (confirmation){
-                //Find out how to send the user to the dashboard
+                window.location.href = ('http://localhost:3000/#/dashboard')
             }else{
                 return
             }
@@ -41,7 +48,7 @@ class Wizard_View1 extends Component {
 
                                 <h3 className='wizardTitle'>Add new listing</h3>
 
-                                <Link to='/'><button className='cancelBtn' onClick={this.handleCancel}>Cancel</button></Link>
+                                <button className='cancelBtn' onClick={this.handleCancel}>Cancel</button>
 
                             </div>
 

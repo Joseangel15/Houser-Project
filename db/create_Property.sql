@@ -10,7 +10,9 @@ insert into houses (
     loan_amount,
     monthly_mortgage,
     desired_rent
-) Values (
+) 
+Values 
+(
     $1,
     $2,
     $3,

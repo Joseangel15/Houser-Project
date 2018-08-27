@@ -1,8 +1,6 @@
 
 module.exports = {
 
-
-
     login: ( req, res, next ) => {
         const db = req.app.get('db');
         let {session} = req;
@@ -58,7 +56,41 @@ module.exports = {
     },
 
     saveProperties: (req, res, next) => {
+        const db = req.app.get('db');
+        let user_id = req.session.user.id
+        const {
+            
+            property_name,
+            property_description,
+            address,
+            city,
+            state,
+            zip,
+            image_url,
+            loan_amount,
+            monthly_mortgage,
+            desired_rent
+            
+        } = req.body;
+        
+        db.create_Property([user_id, property_name, property_description, address, city, state, zip, image_url, loan_amount, monthly_mortgage, desired_rent ])
+        
+        .then(propertyList => res.status(200).send(propertyList)).catch(err => console.log(err))
+        
+    },
 
+    getProperties: (req, res, next) => {
+        const db = req.app.get('db');
+        // let user_id = req.session.user.id;
+        let {id} = req.params;
+        
+        db.get_Property([id]).then(dbResult => {
+            
+            res.status(200).send(dbResult);
+
+            }).catch(err => console.log(err))
+
+        console.log(req.session.user.id)
     }
 
 

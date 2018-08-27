@@ -6,7 +6,26 @@ import { updateImageUrl } from '../../Ducks/reducer';
 import './Wizard_3.css';
 
 class Wizard_3 extends Component {
+    constructor(props){
+        super(props)
 
+
+
+        this.handleCancel = this.handleCancel.bind(this);
+    }
+    
+
+    handleCancel  () {
+
+        let confirmation = window.confirm('Are you sure you want to cancel this process?')
+    
+        if (confirmation){
+                window.location.href = ('http://localhost:3000/#/dashboard')
+            }else{
+                return
+            }
+            
+    }
 
     render() {
 
@@ -24,7 +43,7 @@ class Wizard_3 extends Component {
 
                             <h3 className='wizardTitle'>Add new listing</h3>
 
-                            <button className='cancelBtn'>Cancel</button>
+                            <button className='cancelBtn' onClick={this.handleCancel}>Cancel</button>
 
                         </div>
 

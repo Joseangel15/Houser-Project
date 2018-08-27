@@ -11,7 +11,7 @@ const initialState = {
     loanAmount: '',
     monthlyMortgage: '',
     desiredRent: '',
-    user: {}
+    
     
 
 
@@ -150,5 +150,7 @@ export function getUserData(user) {
         payload: user
     }
 }
+
+
 
 export default reducer;
