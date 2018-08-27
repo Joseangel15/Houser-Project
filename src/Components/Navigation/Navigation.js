@@ -1,11 +1,18 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './Navigation.css';
+import axios from 'axios';
 
 
-function Navigation () {
+class Navigation extends Component {
 
-   
+   handleLogout = () => {
+        axios.post('/api/auth/logout').then(res => {
+            res.data
+        })
+   }
+
+   render(){
 
     return(
         <div className='mainBar'>
@@ -22,12 +29,19 @@ function Navigation () {
 
                 <div className='logOutLink'>
 
-                    <Link to='/'><h5>Logout</h5></Link>
+                    <Link to='/'><h5 
+                        onClick={this.handleLogout}
+                        >
+                        
+                        Logout
+                        
+                        </h5></Link>
 
                 </div>
 
         </div>
     )
+}
 }
 
 export default Navigation;

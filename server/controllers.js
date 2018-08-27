@@ -1,22 +1,38 @@
 
-
 module.exports = {
 
 
 
-    // login: ( req, res, next ) => {
-    //     const { session } = req;
-    //     const { username, password } = req.body;
+    login: ( req, res, next ) => {
+        const db = req.app.get('db');
+        let {session} = req;
+        let {
+            
+            username, 
+            password
+        
+        } = req.body;
+              
 
-    //     const user = users.find()
+        db.user_Login([ username ]).then( ResUser => {
+        
+            if(ResUser[0]){
+                
+                if ( ResUser[0].password == password ) {
+                    session.user.id = ResUser[0].id;
+                    res.status(200).send(session.user);
+                }else if( ResUser[0].password !== password ){
+                    res.status(401).send('Unauthorized.');
+                }
+                
+            } else {
+                res.status(401).send('Unauthorized.');
+            }
+            console.log(session)
+        })
 
-    //     if (user) {
-    //         session.user.username = user.username;
-    //         res.status(200).send(session.user);
-    //     }else {
-    //         res.status(500).send('Unauthorized.');
-    //     }
-    // },
+    },
+
 
     register: (req, res, next) => {
 
@@ -32,6 +48,17 @@ module.exports = {
         db.register_User([username, password, id]).then(dbResult => {
             res.status(200).send(dbResult)
         })
+
+    },
+
+    logout: (req, res, next) => {
+        req.session.destroy();
+        res.status(200).send(req.session)
+
+    },
+
+    saveProperties: (req, res, next) => {
+
     }
 
 

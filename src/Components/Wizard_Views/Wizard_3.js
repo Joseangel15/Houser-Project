@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Navigation from '../Navigation/Navigation';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { updateImageUrl } from '../../Ducks/reducer';
 import './Wizard_3.css';
 
 class Wizard_3 extends Component {
@@ -8,7 +10,8 @@ class Wizard_3 extends Component {
 
     render() {
 
-
+        const { updateImageUrl } = this.props;
+        console.log(this.props.imageUrl)
 
         return (
             <div>
@@ -47,7 +50,10 @@ class Wizard_3 extends Component {
 
                             <h4 className='imaUrl'>Image URL</h4>
 
-                            <input type="text" />
+                            <input 
+                                type="text" 
+                                onChange={(e) => updateImageUrl(e.target.value)}
+                                value={this.props.imageUrl}/>
 
                         </div>
 
@@ -69,5 +75,13 @@ class Wizard_3 extends Component {
     }
 }
 
+function mapStateToProps(state){
+    const { imageUrl } = state;
 
-export default Wizard_3;
+    return {
+        imageUrl
+    }
+}
+
+
+export default connect(mapStateToProps, {updateImageUrl})(Wizard_3);

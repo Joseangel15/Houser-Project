@@ -1,26 +1,35 @@
 import React, {Component} from 'react';
 import Navigation from '../Navigation/Navigation';
 import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { updatePropertyName, updatePropertyDescription } from '../../Ducks/reducer';
 import './Wizard_View1.css';
 
 class Wizard_View1 extends Component {
     
 
-    // handleCancel = () => {
+    handleCancel = () => {
 
-    //     let confirmation = window.confirm('Are you sure you want to cancel this process?')
+        let confirmation = window.confirm('Are you sure you want to cancel this process?')
+    
+        if (confirmation){
+                //Find out how to send the user to the dashboard
+            }else{
+                return
+            }
+            
+    }
+            
+            
+            render(){
+                
+                const { updatePropertyName, updatePropertyDescription } = this.props;
+                console.log(this.props.propertyName);
+                console.log(this.props.propertyDescription)
 
-    //     if (confirmation){
-    //         <Link to='/'></Link>
-    //     }else if(!confirmation){
-    //         return
-    //     }
-    // }
-
-
-    render(){
-        return(
-            <div>
+                
+                return(
+                    <div>
 
                 <Navigation/>
 
@@ -57,11 +66,19 @@ class Wizard_View1 extends Component {
 
                                 <h4 className='propName'>Property Name</h4>
 
-                                <input type="text" className='propNameInp'/>
-
+                                <input 
+                                    type="text" 
+                                    className='propNameInp'
+                                    onChange={(e) => updatePropertyName(e.target.value)}
+                                    value={this.props.propertyName}/>
+                                    
                                 <h4 className='propDesc'>Property Description</h4>
 
-                                <textarea type="text" className='propDescInp'/>
+                                <textarea 
+                                    type="text" 
+                                    className='propDescInp'
+                                    onChange={(e) => updatePropertyDescription(e.target.value)}
+                                    value={this.props.propertyDescription}/>
 
                                 <Link to='/Wizard2'><button className='nextBtn'>Next Step</button></Link>
 
@@ -76,4 +93,13 @@ class Wizard_View1 extends Component {
     }
 }
 
-export default Wizard_View1;
+function mapStateToProps(state){
+    const { propertyName, propertyDescription } = state;
+
+    return {
+        propertyName,
+        propertyDescription
+    };
+}
+
+export default connect(mapStateToProps, {updatePropertyName, updatePropertyDescription})(Wizard_View1);

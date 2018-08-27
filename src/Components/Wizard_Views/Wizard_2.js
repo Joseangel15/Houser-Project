@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Navigation from '../Navigation/Navigation';
 import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { updateAddress, updateCity, updateHomeState, updateZip } from '../../Ducks/reducer';
 import './Wizard_2.css';
 
 class Wizard_2 extends Component {
@@ -15,6 +17,14 @@ class Wizard_2 extends Component {
         const borderIn = {
             border: '1px solid green'
         }
+
+        const { updateAddress, updateCity, updateHomeState, updateZip } = this.props;
+        console.log(this.props.address);
+        console.log(this.props.city);
+        console.log(this.props.homeState);
+        console.log(this.props.zip);
+
+
 
 
         return (
@@ -52,7 +62,12 @@ class Wizard_2 extends Component {
 
                                 <h4 className='h4Address'>Address</h4>
 
-                                <input type="text" className='addressInp' style={borderIn}/>
+                                <input 
+                                    type="text" 
+                                    className='addressInp' 
+                                    style={borderIn}
+                                    onChange={(e) => updateAddress(e.target.value)}
+                                    value={this.props.address}/>
 
                             </div>
 
@@ -61,13 +76,21 @@ class Wizard_2 extends Component {
                                 <div className='cityDiv'>
                                     <h4 style={flex}>City</h4>
 
-                                    <input type="text" style={borderIn}/>
+                                    <input 
+                                        type="text" 
+                                        style={borderIn}
+                                        onChange={(e) => updateCity(e.target.value)}
+                                        value={this.props.city}/>
                                 </div>
 
                                 <div>
                                     <h4 style={flex}>State</h4>
 
-                                    <input type="text" style={borderIn}/>
+                                    <input 
+                                        type="text" 
+                                        style={borderIn}
+                                        onChange={(e) => updateHomeState(e.target.value)}
+                                        value={this.props.homeState}/>
                                 </div>
 
                             </div>
@@ -76,7 +99,12 @@ class Wizard_2 extends Component {
 
                                 <h4 style={flex}>Zip</h4>
 
-                                <input type="text" className='zipInp' style={flex}/>
+                                <input 
+                                    type="text" 
+                                    className='zipInp' 
+                                    style={flex}
+                                    onChange={(e) => updateZip(e.target.value)}
+                                    value={this.props.zip}/>
 
                             </div>
 
@@ -100,5 +128,17 @@ class Wizard_2 extends Component {
     }
 }
 
+function mapStateToProps(state){
+    const  {address, city, homeState, zip} = state;
 
-export default Wizard_2;
+    return {
+
+        address,
+        city,
+        homeState,
+        zip
+
+    }
+}
+
+export default connect(mapStateToProps, {updateAddress, updateCity, updateHomeState, updateZip})(Wizard_2);

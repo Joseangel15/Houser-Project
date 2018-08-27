@@ -1,12 +1,29 @@
 import React, { Component } from 'react';
 import Navigation from '../Navigation/Navigation';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { updateDesiredRent } from '../../Ducks/reducer';
+import axios from 'axios';
 import './Wizard_5.css';
 
 class Wizard_5 extends Component {
 
+    handleSaveProperty(){
+
+        const {} = this.state; 
+
+        
+        axios.post('/api/properties').then(res => {
+
+        })
+
+    }
+
 
     render() {
+
+        const {updateDesiredRent} = this.props;
+        console.log(this.props.desiredRent)
 
 
         return (
@@ -44,7 +61,10 @@ class Wizard_5 extends Component {
 
                             <h4 className='desRentH4'>Desired Rent</h4>
 
-                            <input type="text"/>
+                            <input 
+                                type="text"
+                                onChange={(e) => updateDesiredRent(e.target.value)}
+                                value={this.props.desiredRent}/>
 
                         </div>
 
@@ -52,7 +72,15 @@ class Wizard_5 extends Component {
 
                             <Link to='/Wizard4'><button className='preSteBtn'>Previous Step</button></Link>
 
-                            <Link to='/Dashboard'><button className='completeBtn'>Complete</button></Link>
+                            <Link to='/Dashboard'>
+                                <button 
+                                    className='completeBtn'
+                                    onClick={this.handleSaveProperty}>
+                                    
+                                    Complete
+                                    
+                                </button>
+                            </Link>
 
                         </div>
 
@@ -66,5 +94,13 @@ class Wizard_5 extends Component {
     }
 }
 
+function mapStateToProps(state){
+    const {desiredRent} = state;
 
-export default Wizard_5;
+    return {
+        desiredRent
+    }
+}
+
+
+export default connect(mapStateToProps, {updateDesiredRent})(Wizard_5);

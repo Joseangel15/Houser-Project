@@ -5,12 +5,14 @@ const initialState = {
     propertyDescription: '',
     address: '',
     city: '',
-    state: '',
+    homeState: '',
     zip: '',
     imageUrl: '',
     loanAmount: '',
     monthlyMortgage: '',
     desiredRent: '',
+    user: {}
+    
 
 
 }
@@ -20,15 +22,18 @@ const UPDATE_PROPERTY_NAME = "UPDATE_PROPERTY_NAME";
 const UPDATE_PROPERTY_DESCRIPTION = "UPDATE_PROPERTY_DESCRIPTION";
 const UPDATE_ADDRESS = "UPDATE_ADDRESS";
 const UPDATE_CITY = "UPDATE_CITY";
-const UPDATE_STATE = "UPDATE_STATE"
+const UPDATE_HOME_STATE = "UPDATE_HOME_STATE"
 const UPDATE_ZIP = "UPDATE_ZIP";
 const UPDATE_IMAGEURL = "UPDATE_IMAGEURL";
 const UPDATE_LOAN_AMOUNT = "UPDATE_LOAN_AMOUNT";
 const UPDATE_MONTHLY_MORTGAGE = "UPDATE_MONTHLY_MORTGAGE";
 const UPDATE_DESIRED_RENT = "UPDATE_DESIRED_RENT";
 
+const USER_DATA = "USER_DATA";
+
+
 //Reducer Function
-function reducer(state = initialState, action) {
+function reducer( state = initialState, action) {
     switch (action.type) {
         case UPDATE_PROPERTY_NAME:
             return Object.assign({}, state, { propertyName: action.payload });
@@ -42,8 +47,8 @@ function reducer(state = initialState, action) {
         case UPDATE_CITY:
             return Object.assign({}, state, { city: action.payload });
 
-        case UPDATE_STATE:
-            return Object.assign({}, state, { state: action.payload });
+        case UPDATE_HOME_STATE:
+            return Object.assign({}, state, { homeState: action.payload });
 
         case UPDATE_ZIP:
             return Object.assign({}, state, { zip: action.payload });
@@ -60,6 +65,10 @@ function reducer(state = initialState, action) {
         case UPDATE_DESIRED_RENT:
             return Object.assign({}, state, { desiredRent: action.payload });
 
+        case USER_DATA:
+            return Object.assign({}, state, {user: action.payload});
+
+        default: return state;
     }
 }
 
@@ -93,10 +102,10 @@ export function updateCity( city ) {
     }
 }
 
-export function updateState( state ){
+export function updateHomeState( homeState ){
     return {
-        type: UPDATE_STATE,
-        payload: state
+        type: UPDATE_HOME_STATE,
+        payload: homeState
     }
 }
 
@@ -134,3 +143,12 @@ export function updateDesiredRent( desiredRent ){
         payload: desiredRent
     }
 }
+
+export function getUserData(user) {
+    return{
+        type: USER_DATA,
+        payload: user
+    }
+}
+
+export default reducer;
