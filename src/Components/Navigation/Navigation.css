@@ -36,3 +36,9 @@
     margin-left: 10px;
     font-weight: 100;
 }
+
+.logoutBtn {
+    text-decoration-line: none;
+    text-decoration: none;
+    color: white;
+  }

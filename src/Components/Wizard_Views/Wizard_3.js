@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navigation from '../Navigation/Navigation';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateImageUrl } from '../../Ducks/reducer';
+import { updateImageUrl, updateState } from '../../Ducks/reducer';
 import './Wizard_3.css';
 
 class Wizard_3 extends Component {
@@ -20,7 +20,8 @@ class Wizard_3 extends Component {
         let confirmation = window.confirm('Are you sure you want to cancel this process?')
     
         if (confirmation){
-                window.location.href = ('http://localhost:3000/#/dashboard')
+            this.props.updateState()
+            this.props.history.push('/dashboard')
             }else{
                 return
             }
@@ -30,7 +31,6 @@ class Wizard_3 extends Component {
     render() {
 
         const { updateImageUrl } = this.props;
-        console.log(this.props.imageUrl)
 
         return (
             <div>
@@ -64,7 +64,13 @@ class Wizard_3 extends Component {
                         <div className='propertyInfo'>
 
                             <div>
-                                <div className='picPrev'>Preview</div>
+                                <div className='picPrev'>
+                                    <img 
+                                        src={this.props.imageUrl} 
+                                        alt="" 
+                                        className='housePre'
+                                        value={this.props.imageUrl}/>
+                                </div>
                             </div>
 
                             <h4 className='imaUrl'>Image URL</h4>
@@ -103,4 +109,4 @@ function mapStateToProps(state){
 }
 
 
-export default connect(mapStateToProps, {updateImageUrl})(Wizard_3);
+export default connect(mapStateToProps, {updateImageUrl, updateState})(Wizard_3);

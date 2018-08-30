@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navigation from '../Navigation/Navigation';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateAddress, updateCity, updateHomeState, updateZip } from '../../Ducks/reducer';
+import { updateAddress, updateCity, updateHomeState, updateZip, updateState } from '../../Ducks/reducer';
 import './Wizard_2.css';
 
 class Wizard_2 extends Component {
@@ -19,7 +19,8 @@ class Wizard_2 extends Component {
         let confirmation = window.confirm('Are you sure you want to cancel this process?')
     
         if (confirmation){
-                window.location.href = ('http://localhost:3000/#/dashboard')
+            this.props.updateState()
+            this.props.history.push('/dashboard')
             }else{
                 return
             }
@@ -160,4 +161,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {updateAddress, updateCity, updateHomeState, updateZip})(Wizard_2);
+export default connect(mapStateToProps, {updateAddress, updateCity, updateHomeState, updateZip, updateState})(Wizard_2);

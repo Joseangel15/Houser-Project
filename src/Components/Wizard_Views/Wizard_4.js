@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navigation from '../Navigation/Navigation';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateLoanAmount, updateMonthlyMortgage } from '../../Ducks/reducer';
+import { updateLoanAmount, updateMonthlyMortgage, updateRecommendedRent, updateState } from '../../Ducks/reducer';
 import './Wizard_4.css';
 
 class Wizard_4 extends Component {
@@ -12,6 +12,7 @@ class Wizard_4 extends Component {
 
 
         this.handleCancel = this.handleCancel.bind(this);
+        this.handleRecommendedRent = this.handleRecommendedRent.bind(this);
     }
     
 
@@ -20,11 +21,18 @@ class Wizard_4 extends Component {
         let confirmation = window.confirm('Are you sure you want to cancel this process?')
     
         if (confirmation){
-                window.location.href = ('http://localhost:3000/#/dashboard')
+            this.props.updateState()
+            this.props.history.push('/dashboard')
             }else{
                 return
             }
             
+    }
+
+    handleRecommendedRent (){
+        const {updateRecommendedRent} = this.props;
+
+        
     }
 
     render() {
@@ -99,13 +107,14 @@ class Wizard_4 extends Component {
 }
 
 function mapStateToProps(state){
-    const {loanAmount, monthlyMortgage } = state;
+    const {loanAmount, monthlyMortgage, recommendedRent } = state;
     
     return {
         loanAmount,
-        monthlyMortgage
+        monthlyMortgage,
+        recommendedRent
     }
 }
 
 
-export default connect(mapStateToProps, {updateLoanAmount, updateMonthlyMortgage})(Wizard_4);
+export default connect(mapStateToProps, {updateLoanAmount, updateMonthlyMortgage, updateRecommendedRent, updateState})(Wizard_4);

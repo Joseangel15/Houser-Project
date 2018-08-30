@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Navigation from '../Navigation/Navigation';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updatePropertyName, updatePropertyDescription } from '../../Ducks/reducer';
+import { updatePropertyName, updatePropertyDescription, updateState } from '../../Ducks/reducer';
 import './Wizard_View1.css';
 
 class Wizard_View1 extends Component {
@@ -20,7 +20,8 @@ class Wizard_View1 extends Component {
         let confirmation = window.confirm('Are you sure you want to cancel this process?')
     
         if (confirmation){
-                window.location.href = ('http://localhost:3000/#/dashboard')
+            this.props.updateState()
+            this.props.history.push('/dashboard')
             }else{
                 return
             }
@@ -109,4 +110,4 @@ function mapStateToProps(state){
     };
 }
 
-export default connect(mapStateToProps, {updatePropertyName, updatePropertyDescription})(Wizard_View1);
+export default connect(mapStateToProps, {updatePropertyName, updatePropertyDescription, updateState})(Wizard_View1);

@@ -69,11 +69,12 @@ module.exports = {
             image_url,
             loan_amount,
             monthly_mortgage,
-            desired_rent
+            desired_rent,
+            recommended_rent
             
         } = req.body;
         
-        db.create_Property([user_id, property_name, property_description, address, city, state, zip, image_url, loan_amount, monthly_mortgage, desired_rent ])
+        db.create_Property([user_id, property_name, property_description, address, city, state, zip, image_url, loan_amount, monthly_mortgage, desired_rent, recommended_rent ])
         
         .then(propertyList => res.status(200).send(propertyList)).catch(err => console.log(err))
         
@@ -91,6 +92,27 @@ module.exports = {
             }).catch(err => console.log(err))
 
         console.log(newId)
+    },
+
+    deleteProperties: (req, res, next) => {
+        const {id} = req.params
+
+        const db = req.app.get('db');
+        db.delete_Property([id]).then(properties => { res.status(200).send(properties);
+        
+        })
+    },
+
+    getFiltered: (req, res, next) => {
+        let user_id = req.session.user.id;
+        const {id} = req.params
+        const newUser_id = user_id.toString()
+        console.log(user_id)
+
+        const db = req.app.get('db');
+        db.get_Filtered([newUser_id, id]).then(dbResult => { res.status(200).send(dbResult);
+        
+        })
     }
 
 

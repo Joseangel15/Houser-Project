@@ -9,7 +9,8 @@ insert into houses (
     image_url,
     loan_amount,
     monthly_mortgage,
-    desired_rent
+    desired_rent,
+    recommended_rent
 ) 
 Values 
 (
@@ -23,5 +24,6 @@ Values
     $8,
     $9,
     $10,
-    $11
+    $11,
+    $12
 )

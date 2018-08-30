@@ -58,6 +58,14 @@ app.post('/api/properties', checkAuth, c.saveProperties)
 
 app.get('/api/properties', c.getProperties)
 
+//Delete Properties
+
+app.delete('/api/properties/:id', c.deleteProperties)
+
+//Get filered properties
+
+app.get('/api/properties/:id', c.getFiltered)
+
 
 
 

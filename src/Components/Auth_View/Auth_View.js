@@ -15,6 +15,19 @@ class Auth_View extends Component {
             password: '',
             user: {},
         };
+
+        this.handleShowPass = this.handleShowPass.bind(this);
+    }
+
+    handleShowPass () {
+
+        var x = document.getElementById('myInput');
+
+        if (x.type === 'password') {
+            x.type = 'text';
+        }else {
+            x.type = 'password';
+        }
     }
 
     handleChange = (prop, val) => {
@@ -49,7 +62,7 @@ class Auth_View extends Component {
            
             console.log(res)
             
-        }).catch( res => {alert('Invalid Password or Username')})
+        }).catch( res => {alert('Invalid Password or Username. Please register your login information by writing a Username and Password followed by clicking on Register')})
 
 
     }
@@ -75,6 +88,8 @@ class Auth_View extends Component {
         axios.post('/api/reg', body).then(res => {
 
         })
+
+        alert('Your Username and Password have been registered')
 
         
     }
@@ -107,9 +122,12 @@ class Auth_View extends Component {
                             <h4 className='userH4'>Password</h4>
 
                             <input
-                                type="text"
+                                type="password"
                                 className='loginInputs'
-                                onChange={(e) => this.handleChange('password', e.target.value)} />
+                                onChange={(e) => this.handleChange('password', e.target.value)} 
+                                id='myInput'/>
+
+                            <input type="checkbox" onClick={this.handleShowPass}/> Show Password
 
                         </div>
 

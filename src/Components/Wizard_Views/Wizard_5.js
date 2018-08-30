@@ -2,13 +2,20 @@ import React, { Component } from 'react';
 import Navigation from '../Navigation/Navigation';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateDesiredRent, updatePropertyName } from '../../Ducks/reducer';
+import { updateDesiredRent, updatePropertyName, updateState } from '../../Ducks/reducer';
 import axios from 'axios';
 import './Wizard_5.css';
 
 class Wizard_5 extends Component {
     constructor(props){
         super(props)
+
+        this.state = {
+
+            recommendedRent: this.props.monthlyMortgage * 1.25,
+
+        }
+        console.log(this.state.recommendedRent)
 
         
 
@@ -21,16 +28,20 @@ class Wizard_5 extends Component {
         let confirmation = window.confirm('Are you sure you want to cancel this process?')
     
         if (confirmation){
-                window.location.href = ('http://localhost:3000/#/dashboard')
+            this.props.updateState()
+            this.props.history.push('/dashboard')
             }else{
                 return
-            }
-            
+            };
+
+
     }
 
     handleSaveProperty(){
 
-        const { propertyName, propertyDescription, address, city, homeState, zip, imageUrl, loanAmount, monthlyMortgage, desiredRent} = this.props; 
+        const { propertyName, propertyDescription, address, city, homeState, zip, imageUrl, loanAmount, monthlyMortgage, desiredRent, } = this.props; 
+
+        const { recommendedRent } = this.state;
 
 
         let body = {
@@ -45,7 +56,8 @@ class Wizard_5 extends Component {
             image_url: imageUrl,
             loan_amount: loanAmount,
             monthly_mortgage: monthlyMortgage,
-            desired_rent: desiredRent
+            desired_rent: desiredRent,
+            recommended_rent: recommendedRent
         }
 
         
@@ -53,16 +65,18 @@ class Wizard_5 extends Component {
 
         }).catch(err => console.log(err));
 
-        //  async function resetInitialState () {
-        //     await updatePropertyName(0)
-        // }
+        
+        this.props.updateState()
+        
+        this.props.history.push('/dashboard')
 
     }
 
 
     render() {
 
-        const {updateDesiredRent} = this.props;
+        const {updateDesiredRent, updateState} = this.props;
+
         console.log(this.props.desiredRent)
 
 
@@ -97,7 +111,7 @@ class Wizard_5 extends Component {
 
                         <div className='propertyInfo'>
 
-                            <h5 className='recRent'>Recommended rent ______</h5>
+                            <h5 className='recRent' value={this.props.monthlyMortgage*1.25}>Recommended rent ${(this.props.monthlyMortgage*1.25)}</h5>
 
                             <h4 className='desRentH4'>Desired Rent</h4>
 
@@ -112,15 +126,16 @@ class Wizard_5 extends Component {
 
                             <Link to='/Wizard4'><button className='preSteBtn'>Previous Step</button></Link>
 
-                            <Link to='/Dashboard'>
+                            
                                 <button 
                                     className='completeBtn'
-                                    onClick={this.handleSaveProperty}>
+                                    onClick={this.handleSaveProperty}
+                                    >
                                     
                                     Complete
                                     
                                 </button>
-                            </Link>
+                            
 
                         </div>
 
@@ -153,4 +168,4 @@ function mapStateToProps(state){
 
 
 
-export default connect(mapStateToProps, {updateDesiredRent, updatePropertyName})(Wizard_5);
+export default connect(mapStateToProps, {updateDesiredRent, updatePropertyName, updateState})(Wizard_5);

@@ -7,10 +7,11 @@ const initialState = {
     city: '',
     homeState: '',
     zip: '',
-    imageUrl: '',
+    imageUrl: 'https://uptownlocators.com/wp-content/themes/uptownlocators/img/img-placeholder.jpg',
     loanAmount: '',
     monthlyMortgage: '',
     desiredRent: '',
+    recommended_rent: ''
     
     
 
@@ -28,6 +29,8 @@ const UPDATE_IMAGEURL = "UPDATE_IMAGEURL";
 const UPDATE_LOAN_AMOUNT = "UPDATE_LOAN_AMOUNT";
 const UPDATE_MONTHLY_MORTGAGE = "UPDATE_MONTHLY_MORTGAGE";
 const UPDATE_DESIRED_RENT = "UPDATE_DESIRED_RENT";
+const UPDATE_RECOMMENDED_RENT = "UPDATE_RECOMMENDED_RENT";
+const UPDATE_ALL_STATE = "UPDATE_ALL_STATE";
 
 const USER_DATA = "USER_DATA";
 
@@ -67,6 +70,12 @@ function reducer( state = initialState, action) {
 
         case USER_DATA:
             return Object.assign({}, state, {user: action.payload});
+
+        case UPDATE_RECOMMENDED_RENT:
+            return Object.assign({}, state, { recommended_rent: action.payload});
+        
+        case UPDATE_ALL_STATE:
+            return Object.assign({}, state, {propertyName: '', propertyDescription: '', address: '', city: '', homeState: '', zip: '', imageUrl: 'https://uptownlocators.com/wp-content/themes/uptownlocators/img/img-placeholder.jpg', loanAmount: '', monthlyMortgage: '', desiredRent: '' })
 
         default: return state;
     }
@@ -148,6 +157,23 @@ export function getUserData(user) {
     return{
         type: USER_DATA,
         payload: user
+    }
+}
+
+export function updateRecommendedRent( recommended_rent ){
+    return{
+        type: UPDATE_RECOMMENDED_RENT,
+        payload: recommended_rent
+    }
+}
+
+export function updateState(propertyName, propertyDescription, address, city, homeState, zip, imageUrl, loanAmount, monthlyMortgage, desiredRent ){
+    
+    return {
+
+        type: UPDATE_ALL_STATE,
+        payload: [propertyName, propertyDescription, address, city, homeState, zip, imageUrl, loanAmount, monthlyMortgage, desiredRent]
+
     }
 }
 

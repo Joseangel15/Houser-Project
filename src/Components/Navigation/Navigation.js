@@ -31,6 +31,7 @@ class Navigation extends Component {
 
                     <Link to='/'><h5 
                         onClick={this.handleLogout}
+                        className='logoutBtn'
                         >
                         
                         Logout
