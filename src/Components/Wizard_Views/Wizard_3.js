@@ -78,7 +78,7 @@ class Wizard_3 extends Component {
                             <input 
                                 type="text" 
                                 onChange={(e) => updateImageUrl(e.target.value)}
-                                value={this.props.imageUrl}/>
+                                />
 
                         </div>
 
